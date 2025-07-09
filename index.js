@@ -6,6 +6,7 @@ const dbConnect = require("./config/dbConnect");
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static("uploads"));
 app.use(router);
 app.use(express.urlencoded({ extended: true }));
 dbConnect();
