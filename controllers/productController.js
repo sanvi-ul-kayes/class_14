@@ -30,16 +30,16 @@ async function createProductController(req, res) {
       image: images,
     });
     await createProduct.save();
+    await categorySchema.findOneAndUpdate(
+      { _id: category },
+      { $set: { product: createProduct._id } },
+      { new: true }
+    );
     res.status(201).send({
       success: true,
       msg: "Product Created successfully",
       data: createProduct,
     });
-    await categorySchema.findOneAndUpdate(
-      { _id: category },
-      { $set: { product: product._id } },
-      { new: true }
-    );
   } catch (error) {
     res.status(500).send(error);
   }

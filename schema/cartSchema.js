@@ -6,12 +6,12 @@ const cartSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Auth",
     },
-    products: {
+    product: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
     },
     price: { type: Number },
-    quantity: { type: Number },
+    quantity: { type: Number, default: 1, required: true },
   },
   {
     timestamps: true,
